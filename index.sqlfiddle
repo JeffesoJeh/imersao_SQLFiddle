@@ -1,0 +1,95 @@
+CREATE TABLE cliente (
+
+  cod_cliente varchar(50) PRIMARY KEY,
+
+  nome varchar(50),
+
+  estado varchar(50),
+
+  cidade varchar(50),
+
+  telefone varchar(50)
+
+);
+
+ 
+
+CREATE TABLE produto (
+
+  cod_pk varchar(50) PRIMARY KEY,
+
+  nome varchar(50),
+
+  valor decimal(10,2),
+
+  estoque integer
+
+);
+
+ 
+
+CREATE TABLE compra (
+
+  numero varchar(50) PRIMARY KEY,
+
+  data_compra date,
+
+  cod_cliente varchar(50),
+
+  id_produto varchar(50),
+
+  quantidade integer,
+
+  CONSTRAINT fk_cliente FOREIGN KEY (cod_cliente) REFERENCES cliente(cod_cliente),
+
+  CONSTRAINT fk_produto FOREIGN KEY (id_produto) REFERENCES produto(cod_pk)
+
+);
+
+INSERT INTO cliente (cod_cliente, nome, estado, cidade, telefone)
+
+VALUES
+
+   (1,'Fagner', 'SP', 'P.Prudente', 997989491),
+
+   (2,'Maria', 'SP', 'Campinas', 997989493),
+
+   (3,'Marcela', 'RJ', 'Angra dos Reis', 997989492),
+
+   (4,'Caio', 'SP', 'Assis', 997989495),
+
+   (5,'Marcos', 'SP', 'Campos do Jordão', 997989498),
+
+   (6,'Penelope', 'MG', 'Itajubá', 997989494),
+
+   (7,'Rian', 'SP', 'Santos', 997989490)
+
+ 
+
+ 
+
+INSERT INTO produto( cod_pk,nome, valor, estoque)
+
+VALUES
+
+ 
+
+   (1,'Teclado', 250, 15),
+
+   (2,'Notebook', 3500, 10),
+
+   (3,'Fone de Ouvido', 150, 25),
+
+   (4,'Mouse', 200, 30)
+   
+   INSERT INTO compra (numero, data_compra, cod_cliente, id_produto, quantidade)
+
+VALUES
+
+   (1, '2023-04-26', 1, 4, 1),
+
+   (2, '2023-04-28', 2, 2, 2),
+
+   (3, '2023-04-29', 3, 1, 2),
+
+   (4, '2023-04-27', 4, 3, 1);
